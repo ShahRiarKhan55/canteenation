@@ -53,25 +53,26 @@ export default function SimpleCard(props) {
       minH={"100vh"}
       align={"center"}
       justify={"center"}
-      bg={useColorModeValue("#faeee7")}
+      bg={useColorModeValue("#fffffe")}
     >
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
-          <Heading fontSize={"4xl"} textColor={"#33272a"}>
-            Sign in to your account
+          <Heading fontSize={"4xl"} textColor={"#272343"}>
+            Sign in
           </Heading>
         </Stack>
         <Box
           rounded={"lg"}
-          bg={useColorModeValue("white", "gray.700")}
+          bg={useColorModeValue("#fffffe", "gray.700")}
           boxShadow={"lg"}
           p={8}
+          w="393px"
         >
           <Stack spacing={4}>
             <Heading
               fontSize={"4xl"}
               textAlign={"center"}
-              textColor={"#33272a"}
+              textColor={"#272343"}
             >
               Student
             </Heading>
@@ -89,10 +90,10 @@ export default function SimpleCard(props) {
             <Stack spacing={10}>
               <Button
                 onClick={loginhandler}
-                bg={"#ff8ba7"}
-                color={"#33272a"}
+                bg={"#ffd803"}
+                textColor={"#272343"}
                 _hover={{
-                  bg: "#c3f0ca",
+                  bg: "#e3f6f5",
                 }}
               >
                 Sign in
@@ -105,10 +106,10 @@ export default function SimpleCard(props) {
                   w="100%"
                   maxW={"md"}
                   variant={"outline"}
-                  bg={"#c3f0ca"}
-                  color={"#33272a"}
+                  bg={"#e3f6f5"}
+                  textColor={"#272343"}
                   _hover={{
-                    bg: "#ff8ba7",
+                    bg: "#ffd803",
                   }}
                 >
                   Sign Up

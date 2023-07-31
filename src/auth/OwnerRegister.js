@@ -87,17 +87,17 @@ export default function SignupCard() {
       minH={"100vh"}
       align={"center"}
       justify={"center"}
-      bg={useColorModeValue("#faeee7")}
+      bg={useColorModeValue("#fffffe")}
     >
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
-          <Heading fontSize={"4xl"} textAlign={"center"} textColor={"#33272a"}>
+          <Heading fontSize={"4xl"} textAlign={"center"} textColor={"#272343"}>
             Sign Up
           </Heading>
         </Stack>
         <Box
           rounded={"lg"}
-          bg={useColorModeValue("white", "gray.700")}
+          bg={useColorModeValue("#fffffe", "gray.700")}
           boxShadow={"lg"}
           p={8}
           w="393px"
@@ -106,7 +106,7 @@ export default function SignupCard() {
             <Heading
               fontSize={"4xl"}
               textAlign={"center"}
-              textColor={"#33272a"}
+              textColor={"#272343"}
             >
               Owner
             </Heading>
@@ -188,10 +188,10 @@ export default function SignupCard() {
                 onClick={handleSubmit}
                 loadingText="Submitting"
                 size="lg"
-                bg={"#ff8ba7"}
-                color={"white"}
+                bg={"#ffd803"}
+                textColor={"#272343"}
                 _hover={{
-                  bg: "#c3f0ca",
+                  bg: "#e3f6f5",
                 }}
               >
                 Sign up
@@ -200,7 +200,7 @@ export default function SignupCard() {
             <Stack pt={6}>
               <Text align={"center"}>
                 Already a user?{" "}
-                <Link color={"#33272a"} href="/ownerlogin">
+                <Link color={"#272343"} href="/ownerlogin">
                   Login
                 </Link>
               </Text>

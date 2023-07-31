@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const Student = require("../model/student");
 const Faculty = require("../model/faculty");
 const Owner = require("../model/owner");
+const Category = require("../model/category");
 // eslint-disable-next-line no-unused-vars
 const studentauthenticate = require("../middleware/studentauthenticate");
 // eslint-disable-next-line no-unused-vars
@@ -217,3 +218,35 @@ router.post("/owner_logout", (req, res) => {
 });
 
 module.exports = router;
+
+//------------------------------------Add-Category--------------------------------------------//
+
+router.post("/addcategories", async (req, res) => {
+  const category = req.body;
+  try {
+    const newCategory = new Category(category);
+    await newCategory.save();
+    return res.status(200).json("200");
+  } catch (err) {
+    return res.status(404).json("404");
+  }
+});
+
+router.get("/getcategories", async (req, res) => {
+  try {
+    const cat = await Category.find();
+    res.send(JSON.stringify(cat));
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.post("/deletecategorie", async (req, res) => {
+  const { category } = req.body;
+  try {
+    const cat = await Category.deleteOne({ category: category });
+    return res.status(200).json("200");
+  } catch (err) {
+    return res.status(404).json("404");
+  }
+});
