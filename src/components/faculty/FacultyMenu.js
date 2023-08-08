@@ -68,6 +68,92 @@ export default function Menu() {
     setOFFfilter(true);
   };
 
+  const handleNOT = () => {
+    getData();
+    var orderlist2 = [];
+    var notification = false;
+    const filter = orderlist.filter((item) => {
+      return (
+        item.name === role.name &&
+        item.ishowed === false &&
+        item.orderStatus === "Done" &&
+        item.paymentStatus === "Done"
+      );
+    });
+    const f = orderlist.filter((item) => {
+      return (
+        item.name === role.name &&
+        item.ishowed === false &&
+        item.orderStatus !== "Done" &&
+        item.paymentStatus !== "Done"
+      );
+    });
+    console.log(f);
+    if (f) {
+      for (var a in f) {
+        console.log(f[a]);
+        toast({
+          title: `Wait your Order Id : ${f[a].orderid} is still cooking ! `,
+          position: "top-right",
+          variant: "top-accent",
+          status: "info",
+          duration: 5000,
+          isClosable: true,
+        });
+      }
+    }
+    orderlist2 = filter;
+    let idd;
+    var k = Object.keys(orderlist2);
+    var b = [];
+    b.push(k);
+    b = b[0];
+    let orderID;
+    b = b.filter((item) => {
+      console.log("b", b);
+      return orderlist2[item];
+    });
+    if (filter.length !== 0) {
+      for (var x in b) {
+        orderID = orderlist2[x].orderid;
+        idd = orderlist2[x]._id;
+      }
+      notification = true;
+    }
+    if (notification === true) {
+      const updateShowNotification = async () => {
+        try {
+          const res = await fetch("/showNotification", {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              ishowed: true,
+              _id: idd,
+            }),
+          });
+          const data = await res.json();
+          if (data === "200") {
+            toast({
+              title: `Your OrderId : ${orderID}, Go Get Your Food from Counter`,
+              position: "top-right",
+              variant: "top-accent",
+              status: "success",
+              duration: 10000,
+              isClosable: true,
+            });
+          }
+          setShowbutton(false);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      updateShowNotification();
+    }
+  };
+
   useEffect(() => {
     const unsub = onSnapshot(collection(db, "items"), (snapshot) => {
       let orderlist = [];
@@ -153,89 +239,3 @@ export default function Menu() {
     </>
   );
 }
-
-// const handleNOT = () => {
-//   getData();
-//   var orderlist2 = [];
-//   var notification = false;
-//   const filter = orderlist.filter((item) => {
-//     return (
-//       item.name === role.name &&
-//       item.ishowed === false &&
-//       item.orderStatus === "Done" &&
-//       item.paymentStatus === "Done"
-//     );
-//   });
-//   const f = orderlist.filter((item) => {
-//     return (
-//       item.name === role.name &&
-//       item.ishowed === false &&
-//       item.orderStatus !== "Done" &&
-//       item.paymentStatus !== "Done"
-//     );
-//   });
-//   console.log(f);
-//   if (f) {
-//     for (var a in f) {
-//       console.log(f[a]);
-//       toast({
-//         title: `Wait your Order Id : ${f[a].orderid} is still cooking ! `,
-//         position: "top-right",
-//         variant: "top-accent",
-//         status: "info",
-//         duration: 5000,
-//         isClosable: true,
-//       });
-//     }
-//   }
-//   orderlist2 = filter;
-//   let idd;
-//   var k = Object.keys(orderlist2);
-//   var b = [];
-//   b.push(k);
-//   b = b[0];
-//   let orderID;
-//   b = b.filter((item) => {
-//     console.log("b", b);
-//     return orderlist2[item];
-//   });
-//   if (filter.length !== 0) {
-//     for (var x in b) {
-//       orderID = orderlist2[x].orderid;
-//       idd = orderlist2[x]._id;
-//     }
-//     notification = true;
-//   }
-//   if (notification === true) {
-//     const updateShowNotification = async () => {
-//       try {
-//         const res = await fetch("/showNotification", {
-//           method: "POST",
-//           headers: {
-//             Accept: "application/json",
-//             "Content-Type": "application/json",
-//           },
-//           body: JSON.stringify({
-//             ishowed: true,
-//             _id: idd,
-//           }),
-//         });
-//         const data = await res.json();
-//         if (data === "200") {
-//           toast({
-//             title: `Your OrderId : ${orderID}, Go Get Your Food from Counter`,
-//             position: "top-right",
-//             variant: "top-accent",
-//             status: "success",
-//             duration: 10000,
-//             isClosable: true,
-//           });
-//         }
-//         setShowbutton(false);
-//       } catch (err) {
-//         console.log(err);
-//       }
-//     };
-//     updateShowNotification();
-//   }
-// };
