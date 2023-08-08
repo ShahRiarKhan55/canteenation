@@ -14,8 +14,8 @@ import {
 import { FiShoppingCart } from "react-icons/fi";
 import { useCart } from "react-use-cart";
 import { useNavigate } from "react-router-dom";
-import Veg from "../../Images/icons8-vegetarian-food-symbol-48.png";
-import NonVeg from "../../Images/icons8-non-vegetarian-food-symbol-48.png";
+import Solid from "../../Images/icons8-vegetarian-food-symbol-48.png";
+import Drinks from "../../Images/icons8-non-vegetarian-food-symbol-48.png";
 import "./Order.css";
 
 function ProductAddToCart(props) {
@@ -45,6 +45,7 @@ function ProductAddToCart(props) {
                 shadow="lg"
                 position="relative"
                 key={data.id}
+                bg={"#fffffe"}
               >
                 {data.isNew && (
                   <Circle
@@ -61,8 +62,8 @@ function ProductAddToCart(props) {
                   src={data.image}
                   alt={`Picture of ${data.name}`}
                   roundedTop="lg"
-                  w="270px"
-                  h="270px"
+                  maxW="sm"
+                  maxH="sm"
                   objectFit="cover"
                 />
 
@@ -89,6 +90,7 @@ function ProductAddToCart(props) {
                       fontWeight="semibold"
                       as="h4"
                       lineHeight="tight"
+                      textColor={"#272343"}
                     >
                       {data.name}
                     </Box>
@@ -97,18 +99,26 @@ function ProductAddToCart(props) {
                   <Flex justifyContent="space-between" alignContent="center">
                     <Box fontSize="2xl">
                       <Box as="span" color={"gray.600"} fontSize="lg">
-                        ₹
+                        ৳
                       </Box>
                       {data.price}
                     </Box>
                   </Flex>
                   <Flex justifyContent="space-between" alignContent="center">
                     <Box fontSize="2xl">
+                      <Box as="span" color={"gray.600"}>
+                        Q. &nbsp;
+                      </Box>
+                      {data.remain}/{data.quantity}
+                    </Box>
+                  </Flex>
+                  <Flex justifyContent="space-between" alignContent="center">
+                    <Box fontSize="2xl">
                       <Box as="span" color={"gray.600"} fontSize="lg"></Box>
-                      {data.type === "Veg" ? (
-                        <Image src={Veg}></Image>
+                      {data.type === "Solid" ? (
+                        <Image src={Solid}></Image>
                       ) : (
-                        <Image src={NonVeg}></Image>
+                        <Image src={Drinks}></Image>
                       )}
                     </Box>
                   </Flex>
@@ -121,8 +131,11 @@ function ProductAddToCart(props) {
                       <Button
                         colorScheme="teal"
                         w="100"
+                        bg={"#ffd803"}
+                        textColor={"#272343"}
+                        _hover={{ bg: "#e3f6f5" }}
                         onClick={() => {
-                          navigate("/user/item-page");
+                          navigate("/faculty/item-page");
                           addItem(data);
                         }}
                       >

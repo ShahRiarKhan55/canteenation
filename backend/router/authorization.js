@@ -4,12 +4,8 @@ const Student = require("../model/student");
 const Faculty = require("../model/faculty");
 const Owner = require("../model/owner");
 const Category = require("../model/category");
-// eslint-disable-next-line no-unused-vars
-const studentauthenticate = require("../middleware/studentauthenticate");
-// eslint-disable-next-line no-unused-vars
-const facultyauthenticate = require("../middleware/facultyauthenticate");
-// eslint-disable-next-line no-unused-vars
-const ownerauthenticate = require("../middleware/ownerauthenticate");
+const Order = require("../model/order");
+const sendemail = require("../middleware/sendemail");
 const router = express.Router();
 
 //------------------------------------STUDENT SIDE--------------------------------------------//
@@ -250,3 +246,107 @@ router.post("/deletecategorie", async (req, res) => {
     return res.status(404).json("404");
   }
 });
+
+//------------------------------------ORDER SIDE--------------------------------------------//
+router.post("/addOrder", async (req, res) => {
+  const {
+    order,
+    totalprice,
+    facultyname,
+    facid,
+    facultyroom,
+    facultyphone,
+    paymentStatus,
+  } = req.body;
+  const orderDate = new Date();
+  const orderid = Math.floor(Math.random() * 1000000 + 1);
+  const orderStatus = "On Delivery";
+  try {
+    const newOrder = Order.insertMany({
+      order: order.orders,
+      orderDate,
+      totalprice,
+      facultyname,
+      facid,
+      facultyroom,
+      facultyphone,
+      paymentStatus,
+      orderStatus,
+      orderid,
+    });
+    return res.status(200).json("200");
+  } catch (err) {
+    return res.status(404).json("404");
+  }
+});
+
+router.get("/showorders", async (req, res) => {
+  try {
+    const orders = await Order.find();
+    res.send(JSON.stringify(orders));
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.post("/updateStatus", async (req, res) => {
+  console.log(req.body);
+  const { orderStatus, _id, paymentStatus } = req.body;
+  try {
+    const update = await Order.findByIdAndUpdate(
+      { _id },
+      {
+        $set: {
+          orderStatus,
+          paymentStatus,
+        },
+      },
+      {
+        new: true,
+      }
+    );
+    console.log(update);
+    const fac = await Faculty.findById(update.facid);
+    if (update.orderStatus === "Done") {
+      try {
+        const send_to = fac.email;
+        const sent_from = process.env.EMAIL_USER;
+        const subject = "Your Order Is Ready !! 🍴";
+        const message = `
+          Hello ${update.facultyname} 
+          OrderId : ${update.orderid}
+          Your food is ready and served, please take it from the counter.
+          Regards , Olympia Cafe 
+          `;
+
+        await sendemail(subject, message, send_to, sent_from);
+        return res.status(200).json("200");
+      } catch (err) {
+        return res.status(200).json("400");
+      }
+    }
+    return res.status(200).json("200");
+  } catch (err) {
+    return res.status(400).json("400");
+  }
+});
+
+router.post("/showNotification", async (req, res) => {
+  const { ishowed, _id } = req.body;
+  console.log(ishowed, _id);
+  try {
+    const update = await Order.findByIdAndUpdate(
+      { _id },
+      {
+        $set: {
+          ishowed,
+        },
+      }
+    );
+    return res.status(200).json("200");
+  } catch (err) {
+    return res.status(400).json("400");
+  }
+});
+
+module.exports = router;

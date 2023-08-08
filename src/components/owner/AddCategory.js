@@ -136,7 +136,7 @@ export default function Category() {
             {catData.map((item, index) => {
               return (
                 <Tr key={item.id}>
-                  <Td>{index}</Td>
+                  <Td>{index + 1}</Td>
                   <Td>{item.category}</Td>
                   <Td isNumeric>
                     <ButtonGroup>
@@ -194,7 +194,6 @@ export default function Category() {
           <ModalFooter>
             <Button
               colorScheme="teal"
-              // variant="outline"
               mr={3}
               onClick={onClose}
               bg={"#e3f6f5"}

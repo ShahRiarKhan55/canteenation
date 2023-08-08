@@ -25,7 +25,7 @@ import {
   Radio,
   Stack,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Order.css";
 
 function ProductAddToCart() {
@@ -91,7 +91,7 @@ function ProductAddToCart() {
       });
       const data = await res.json();
       if (data === "400") {
-        alert("Error");
+        alert("Success!");
       } else {
         // alert("Success");
         getData();
@@ -102,11 +102,11 @@ function ProductAddToCart() {
     }
   };
 
-  updatedata.useEffect(() => {
+  useEffect(() => {
     getData();
   }, []);
 
-  setUpdateData.useEffect(() => {
+  useEffect(() => {
     getData();
   }, [updatedata]);
   return (
@@ -196,7 +196,7 @@ function ProductAddToCart() {
                                 <image
                                   src={item.image}
                                   alt={`Picture of ${item.image}`}
-                                  roundedTop="lg"
+                                  roundedtop="lg"
                                   w="270px"
                                   style={{ width: "270px" }}
                                 />

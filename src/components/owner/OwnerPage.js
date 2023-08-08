@@ -1,5 +1,7 @@
+import React from "react";
 import OwnerNavbar from "../navbar/OwnerNavbar";
 import { Box, Flex, Heading, useColorModeValue } from "@chakra-ui/react";
+import Order from "../../pages/Product/Order";
 export default function OwnerPage() {
   return (
     <>
@@ -30,7 +32,9 @@ export default function OwnerPage() {
         </Flex>
       </Box>
       <Box p="8">
-        <Box></Box>
+        <Box>
+          <Order />
+        </Box>
       </Box>
     </>
   );

@@ -25,17 +25,16 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import FacultyNavbar from "../navbar/FacultyNavbar";
-import SupportedCard from "../../Images/SupportedCards.png";
+import SupportedCard from "../../Images/images.jpeg";
 import { BsCreditCard2BackFill, BsCashStack } from "react-icons/bs";
 import { DeleteIcon } from "@chakra-ui/icons";
 import "./Cart.css";
 import { useCart } from "react-use-cart";
-import name from "../../auth/FacultyRegister";
-// import { RoleContext } from "../../App";
-// import { useContext } from "react";
+import { RoleContext } from "../../App";
+import { useContext } from "react";
 
 export default function ItemPage() {
-  //   const role = useContext(RoleContext);
+  const role = useContext(RoleContext);
   const {
     isEmpty,
     items,
@@ -61,8 +60,10 @@ export default function ItemPage() {
         body: JSON.stringify({
           order,
           totalprice,
-          facultyname: name.name,
-          facid: name._id,
+          facultyname: role.name,
+          facid: role._id,
+          facultyroom: role.room_no,
+          facultyphone: role.phone_no,
           paymentStatus,
         }),
       });
@@ -80,7 +81,6 @@ export default function ItemPage() {
     }
     emptyCart();
   };
-  // if (isEmpty) return <h1 className=" text-center "> Your Cart is Empty </h1>;
   return (
     <>
       <FacultyNavbar />
@@ -134,11 +134,10 @@ export default function ItemPage() {
                         <Td>{index + 1}</Td>
                         <Td>
                           <Image
-                            // borderRadius="full"
                             objectFit="contain"
                             boxSize="100px"
                             src={item.image}
-                            alt="Dan Abramov"
+                            alt={item.name}
                           />{" "}
                         </Td>
                         <Td>{item.name}</Td>
@@ -199,9 +198,6 @@ export default function ItemPage() {
               </Table>
             </TableContainer>
           </Box>
-          {/* <Center height='600'>
-              <Divider orientation='vertical' />
-            </Center> */}
           <Box w="100%" h="100%" p="6">
             <Heading as="h2" fontSize="2.4rem" noOfLines={1}>
               Billing

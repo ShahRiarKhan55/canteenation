@@ -1,15 +1,16 @@
+import React from "react";
 import {
   Table,
   Thead,
   Tbody,
   Box,
   Flex,
-  Button,
+  // Button,
   Heading,
   useColorModeValue,
   Tr,
   Th,
-  Icon,
+  // Icon,
   Td,
   Accordion,
   AccordionItem,
@@ -17,11 +18,11 @@ import {
   AccordionPanel,
   AccordionButton,
   TableContainer,
-  ButtonGroup,
+  // ButtonGroup,
 } from "@chakra-ui/react";
 import OwnerNavbar from "../navbar/OwnerNavbar";
-import { DeleteIcon } from "@chakra-ui/icons";
-import { MdModeEditOutline } from "react-icons/md";
+// import { DeleteIcon } from "@chakra-ui/icons";
+// import { MdModeEditOutline } from "react-icons/md";
 import { useState, useEffect } from "react";
 
 export default function Category() {
@@ -93,14 +94,23 @@ export default function Category() {
                 Order By
               </Th>
               <Th fontSize="1.5rem" textColor={"#272343"}>
+                Order ID
+              </Th>
+              <Th fontSize="1.5rem" textColor={"#272343"}>
+                Room No.
+              </Th>
+              <Th fontSize="1.5rem" textColor={"#272343"}>
+                Phone No.
+              </Th>
+              <Th fontSize="1.5rem" textColor={"#272343"}>
                 Order On
               </Th>
               <Th fontSize="1.5rem" textColor={"#272343"}>
                 Payment Status
               </Th>
-              <Th isNumeric fontSize="1.5rem" textColor={"#272343"}>
+              {/* <Th isNumeric fontSize="1.5rem" textColor={"#272343"}>
                 Action
-              </Th>
+              </Th> */}
             </Tr>
           </Thead>
           {orderlist.map((item, index) => {
@@ -108,7 +118,7 @@ export default function Category() {
             return (
               <Tbody key={item.id}>
                 <Tr>
-                  <Td>{index + 1}</Td>
+                  <Td textAlign={"center"}>{index + 1}</Td>
                   <Td>
                     <Accordion allowMultiple>
                       {item.order.map((data) => {
@@ -116,10 +126,10 @@ export default function Category() {
                           <AccordionItem key={data.id}>
                             <h2>
                               <AccordionButton>
-                                <Box flex="1" textAlign="left">
+                                <Box flex="1" textAlign="center">
                                   {data.name}
                                 </Box>
-                                <Box flex="1" textAlign="left">
+                                <Box flex="1" textAlign="center">
                                   {data.quantity}
                                 </Box>
                                 <AccordionIcon />
@@ -131,11 +141,14 @@ export default function Category() {
                       })}
                     </Accordion>
                   </Td>
-                  <Td>{item.totalprice}</Td>
-                  <Td>{item.facultyname}</Td>
-                  <Td>{date.toLocaleDateString()}</Td>
-                  <Td>{item.paymentStatus}</Td>
-                  <Td isNumeric>
+                  <Td textAlign={"center"}>{item.totalprice}</Td>
+                  <Td textAlign={"center"}>{item.facultyname}</Td>
+                  <Td textAlign={"center"}>{item.orderid}</Td>
+                  <Td textAlign={"center"}>{item.facultyroom}</Td>
+                  <Td textAlign={"center"}>{item.facultyphone}</Td>
+                  <Td textAlign={"center"}>{date.toLocaleDateString()}</Td>
+                  <Td textAlign={"center"}>{item.paymentStatus}</Td>
+                  {/* <Td isNumeric>
                     <ButtonGroup>
                       <Button>
                         <DeleteIcon />
@@ -144,7 +157,7 @@ export default function Category() {
                         <Icon as={MdModeEditOutline} />
                       </Button>
                     </ButtonGroup>
-                  </Td>
+                  </Td> */}
                 </Tr>
               </Tbody>
             );

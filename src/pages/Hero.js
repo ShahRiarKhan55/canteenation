@@ -2,7 +2,7 @@ import { Flex, Container, Heading, Stack, Text, Image } from "@chakra-ui/react";
 
 export default function CallToActionWithIllustration() {
   return (
-    <Container maxW={"full"} style={{ background: `#faeee7` }}>
+    <Container maxW={"full"} style={{ background: `#fffffe` }}>
       <Stack textAlign={"center"} align={"center"} spacing={{ base: 8, md: 8 }}>
         <Heading
           fontWeight={600}
@@ -10,11 +10,11 @@ export default function CallToActionWithIllustration() {
           lineHeight={"110%"}
         >
           UIU{" "}
-          <Text as={"span"} color={"#33272a"}>
+          <Text as={"span"} color={"#272343"}>
             Canteey
           </Text>
         </Heading>
-        <Text color={"#594a4e"} maxW={"2xl"}>
+        <Text color={"#2d334a"} maxW={"2xl"}>
           A university canteen is a dining facility located on a university
           campus that provides meals and refreshments to students, faculty, and
           staff. The university canteen doesn’t only provide food but also

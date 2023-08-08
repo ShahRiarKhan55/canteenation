@@ -19,12 +19,11 @@ import {
 } from "@chakra-ui/react";
 import FacultyNavbar from "../navbar/FacultyNavbar";
 import { useState, useEffect } from "react";
-// import { RoleContext } from "../../App";
-// import { useContext } from "react";
-import name from "../../auth/FacultyRegister";
+import { RoleContext } from "../../App";
+import { useContext } from "react";
 
 export default function Category() {
-  //   const role = useContext(RoleContext);
+  const role = useContext(RoleContext);
   const [orderlist, setOrderlist] = useState([]);
   const getData = async () => {
     try {
@@ -38,7 +37,7 @@ export default function Category() {
       });
       var data = await res.json();
       data = data.filter((item) => {
-        return item.facultyname === name.name;
+        return item.name === role.name;
       });
       setOrderlist(data);
       console.log(data);
