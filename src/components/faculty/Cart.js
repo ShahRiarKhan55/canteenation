@@ -222,7 +222,7 @@ export default function ItemPage() {
             <Image src={SupportedCard} alt="" />
             <Button
               colorScheme="teal"
-              w="100%"
+              w="50%"
               mt="10"
               size="lg"
               bg={"#ffd803"}
@@ -230,7 +230,20 @@ export default function ItemPage() {
               _hover={{ bg: "#e3f6f5" }}
             >
               <Icon as={BsCreditCard2BackFill} />
-              &nbsp;&nbsp;Pay
+              &nbsp;&nbsp;Bkash
+            </Button>
+            <Button
+              spacing
+              colorScheme="teal"
+              w="50%"
+              mt="10"
+              size="lg"
+              bg={"#ffd803"}
+              textColor={"#272343"}
+              _hover={{ bg: "#e3f6f5" }}
+            >
+              <Icon as={BsCreditCard2BackFill} />
+              &nbsp;&nbsp;Nagad
             </Button>
             <Divider orientation="horizontal" mt="8" />
             <Button
