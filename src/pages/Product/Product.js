@@ -14,8 +14,10 @@ import {
 import { FiShoppingCart } from "react-icons/fi";
 import { useCart } from "react-use-cart";
 import { useNavigate } from "react-router-dom";
-import Solid from "../../Images/icons8-vegetarian-food-symbol-48.png";
-import Drinks from "../../Images/icons8-non-vegetarian-food-symbol-48.png";
+// import Solid from "../../Images/icons8-vegetarian-food-symbol-48.png";
+// import Drinks from "../../Images/icons8-non-vegetarian-food-symbol-48.png";
+import { FaBowlFood } from "react-icons/fa6";
+import { BiSolidDrink } from "react-icons/bi";
 import "./Order.css";
 
 function ProductAddToCart(props) {
@@ -27,7 +29,7 @@ function ProductAddToCart(props) {
       <SimpleGrid minChildWidth="250px" spacing={2} p="10">
         <Flex
           className="flex-div"
-          gap="15px"
+          gap="10px"
           alignItems="stretch"
           flexWrap="wrap"
         >
@@ -39,7 +41,7 @@ function ProductAddToCart(props) {
           {props.itm.map((data) => {
             return (
               <Box
-                maxW="sm"
+                maxW="355px"
                 borderWidth="1px"
                 rounded="lg"
                 shadow="lg"
@@ -62,7 +64,7 @@ function ProductAddToCart(props) {
                   src={data.image}
                   alt={`Picture of ${data.name}`}
                   roundedTop="lg"
-                  maxW="sm"
+                  maxW="fit"
                   maxH="sm"
                   objectFit="cover"
                 />
@@ -116,9 +118,9 @@ function ProductAddToCart(props) {
                     <Box fontSize="2xl">
                       <Box as="span" color={"gray.600"} fontSize="lg"></Box>
                       {data.type === "Solid" ? (
-                        <Image src={Solid}></Image>
+                        <FaBowlFood />
                       ) : (
-                        <Image src={Drinks}></Image>
+                        <BiSolidDrink />
                       )}
                     </Box>
                   </Flex>

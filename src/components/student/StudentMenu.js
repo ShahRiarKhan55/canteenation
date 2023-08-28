@@ -59,7 +59,7 @@ export default function StudentMenu() {
   return (
     <>
       <StudentNavbar />
-      <Flex justifyContent="space-between">
+      <Flex>
         <Heading as="h2" p="10" size="2xl">
           Menu Item
         </Heading>
@@ -67,7 +67,12 @@ export default function StudentMenu() {
           <FormLabel>
             Filter <Icon as={MdFilterAlt} />
           </FormLabel>
-          <Select placeholder="Select option" w="2xl" onChange={handleFilter}>
+          <Select
+            placeholder="All Categories"
+            w="2xl"
+            onChange={handleFilter}
+            bg={"#e3f6f5"}
+          >
             {cat.map((item) => {
               return (
                 <option key={item.id} value={item.category}>
@@ -77,19 +82,6 @@ export default function StudentMenu() {
             })}
           </Select>
         </Box>
-        {/* {showbUtton && <Button onClick={handleNOT}>Get order</Button>} */}
-        {/* <Box
-          display="flex"
-          justifyContent="center"
-          flexDirection="column-reverse"
-          alignItems="center"
-          mr="20"
-        > */}
-        {/* <Link to="/faculty/item-page">
-            <Icon as={FiShoppingCart} h={7} w={7} alignSelf={"center"}></Icon>
-          </Link> */}
-        {/* <Badge colorScheme="green">{totalUniqueItems}</Badge> */}
-        {/* </Box> */}
       </Flex>
       {onfilter ? (
         <ProductStudent itm={newList} />

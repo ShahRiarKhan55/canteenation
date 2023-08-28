@@ -126,10 +126,10 @@ export default function Category() {
                           <AccordionItem key={data.id}>
                             <h2>
                               <AccordionButton>
-                                <Box flex="1" textAlign="center">
+                                <Box flex="1" textAlign="left">
                                   {data.name}
                                 </Box>
-                                <Box flex="1" textAlign="center">
+                                <Box flex="1" textAlign="right">
                                   {data.quantity}
                                 </Box>
                                 <AccordionIcon />

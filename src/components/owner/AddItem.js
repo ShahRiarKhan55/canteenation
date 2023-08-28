@@ -228,7 +228,7 @@ export default function AddItem() {
           Filter <Icon as={MdFilterAlt} />
         </FormLabel>
         <Select
-          placeholder="Select option"
+          placeholder="All Categories"
           w="2xl"
           bg={"#e3f6f5"}
           textColor={"#272343"}

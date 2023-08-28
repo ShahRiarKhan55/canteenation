@@ -223,8 +223,10 @@ function ProductAddToCart() {
                 >
                   <Box fontSize="2xl">
                     <Button
-                      colorScheme="teal"
                       w="100"
+                      bg={"#ffd803"}
+                      textColor={"#272343"}
+                      _hover={{ bg: "#e3f6f5" }}
                       onClick={() => {
                         onOpen();
                         setUpdateData(data);
@@ -272,16 +274,6 @@ function ProductAddToCart() {
                       <FormLabel>Order Status</FormLabel>
                       <RadioGroup defaultValue={data.orderStatus}>
                         <Stack spacing={5} direction="row">
-                          {/* <Radio
-                            colorScheme="red"
-                            value="Cooking"
-                            name="orderStatus"
-                            onChange={(e) => {
-                              setOS(e.target.value);
-                            }}
-                          >
-                            Cooking
-                          </Radio> */}
                           <Radio
                             colorScheme="green"
                             value="Done"
@@ -299,14 +291,21 @@ function ProductAddToCart() {
 
                   <ModalFooter>
                     <Button
-                      colorScheme="teal"
-                      variant="outline"
+                      bg={"#e3f6f5"}
+                      textColor={"#272343"}
+                      _hover={{ bg: "#ffd803" }}
                       mr={3}
                       onClick={onClose}
                     >
                       Close
                     </Button>
-                    <Button colorScheme="teal" onClick={handleUpdate} mr={3}>
+                    <Button
+                      onClick={handleUpdate}
+                      mr={3}
+                      bg={"#ffd803"}
+                      textColor={"#272343"}
+                      _hover={{ bg: "#e3f6f5" }}
+                    >
                       Save
                     </Button>
                   </ModalFooter>

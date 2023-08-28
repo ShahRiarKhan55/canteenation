@@ -315,7 +315,7 @@ router.post("/updateStatus", async (req, res) => {
         const message = `
           Hello ${update.facultyname} 
           OrderId : ${update.orderid}
-          Your food is ready and served, please take it from the counter.
+          Your food is ready and will be delivered soon.
           Regards , Olympia Cafe 
           `;
 

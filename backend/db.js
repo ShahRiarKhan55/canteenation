@@ -1,4 +1,4 @@
-const mg = require('mongoose');
+const mg = require("mongoose");
 
 mg.connect(process.env.DB)
   .then(() => console.log("connection successful "))

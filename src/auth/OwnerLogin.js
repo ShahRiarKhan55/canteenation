@@ -13,9 +13,9 @@ import {
   Center,
   Divider,
 } from "@chakra-ui/react";
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import pic from "../Images/blob-scene-haikei.png";
 
 export default function SimpleCard(props) {
   const navigate = useNavigate();
@@ -45,6 +45,7 @@ export default function SimpleCard(props) {
       }
       if (dataa) {
         alert("Successfully Logged In");
+        props.OWNrole(dataa);
         navigate("/owner/ownerpage");
       }
     } catch (err) {
@@ -56,7 +57,9 @@ export default function SimpleCard(props) {
       minH={"100vh"}
       align={"center"}
       justify={"center"}
-      bg={useColorModeValue("#fffffe")}
+      backgroundImage={pic}
+      backgroundPosition={"center"}
+      backgroundSize={"1540px"}
     >
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
@@ -64,13 +67,7 @@ export default function SimpleCard(props) {
             Sign in
           </Heading>
         </Stack>
-        <Box
-          rounded={"lg"}
-          bg={useColorModeValue("#fffffe", "gray.700")}
-          boxShadow={"lg"}
-          p={8}
-          w="393px"
-        >
+        <Box rounded={"lg"} boxShadow={"lg"} p={8} w="393px" bg={"#fffffe"}>
           <Stack spacing={4}>
             <Heading
               fontSize={"4xl"}
@@ -81,21 +78,22 @@ export default function SimpleCard(props) {
             </Heading>
             <FormControl id="email">
               <FormLabel>Email</FormLabel>
-              <Input type="email" onChange={(e) => setEmail(e.target.value)} />
+              <Input
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+                bg={"#e3f6f5"}
+              />
             </FormControl>
             <FormControl id="password">
               <FormLabel>Password</FormLabel>
               <Input
                 type="password"
                 onChange={(e) => setPassword(e.target.value)}
+                bg={"#e3f6f5"}
               />
             </FormControl>
-            <Stack spacing={10}>
-              <Stack
-                direction={{ base: "column", sm: "row" }}
-                align={"start"}
-                justify={"space-between"}
-              ></Stack>
+            <Stack spacing={5}>
+              <Stack></Stack>
               <Button
                 onClick={loginhandler}
                 bg={"#ffd803"}
@@ -113,6 +111,8 @@ export default function SimpleCard(props) {
                 <Link
                   color={"#33272a"}
                   href="https://forms.gle/UYMAhXgRyqdKVf3h7"
+                  _hover={{ textColor: "#ffd803" }}
+                  textDecoration={"underline"}
                 >
                   Click Here
                 </Link>
@@ -124,7 +124,6 @@ export default function SimpleCard(props) {
                   <Button
                     w="100%"
                     maxW={"md"}
-                    variant={"outline"}
                     bg={"#e3f6f5"}
                     textColor={"#272343"}
                     _hover={{

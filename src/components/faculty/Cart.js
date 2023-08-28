@@ -25,8 +25,8 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import FacultyNavbar from "../navbar/FacultyNavbar";
-import SupportedCard from "../../Images/images.jpeg";
-import { BsCreditCard2BackFill, BsCashStack } from "react-icons/bs";
+// import SupportedCard from "../../Images/images.jpeg";
+import { BsCashStack } from "react-icons/bs";
 import { DeleteIcon } from "@chakra-ui/icons";
 import "./Cart.css";
 import { useCart } from "react-use-cart";
@@ -74,7 +74,7 @@ export default function ItemPage() {
         return alert("Wrong");
       }
       if (dataa === "200") {
-        alert("Success");
+        alert("Ordered Successfully");
       }
     } catch (err) {
       alert(err);
@@ -165,10 +165,10 @@ export default function ItemPage() {
                             </NumberInputStepper>
 
                             <IconButton
-                              colorScheme="teal"
+                              bg={"#ffd803"}
+                              _hover={{ bg: "#e3f6f5" }}
                               aria-label="Call Segun"
                               size="md"
-                              variant="outline"
                               onClick={() => {
                                 removeItem(item.id);
                               }}
@@ -213,10 +213,10 @@ export default function ItemPage() {
                 <strong>৳{cartTotal}</strong>
               </Text>
             </Box>
-            <Center>
+            {/* <Center>
               <Divider orientation="horizontal" />
-            </Center>
-            <Text fontSize="2xl" mt="5" textColor={"#272343"}>
+            </Center> */}
+            {/* <Text fontSize="2xl" mt="5" textColor={"#272343"}>
               WE ACCEPT:
             </Text>
             <Image src={SupportedCard} alt="" />
@@ -244,7 +244,7 @@ export default function ItemPage() {
             >
               <Icon as={BsCreditCard2BackFill} />
               &nbsp;&nbsp;Nagad
-            </Button>
+            </Button> */}
             <Divider orientation="horizontal" mt="8" />
             <Button
               colorScheme="teal"

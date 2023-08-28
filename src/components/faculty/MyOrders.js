@@ -121,7 +121,8 @@ export default function Category() {
                                 <Box flex="1" textAlign="left">
                                   {data.name}
                                 </Box>
-                                <Box flex="1" textAlign="left">
+
+                                <Box flex="1" textAlign="right">
                                   {data.quantity}
                                 </Box>
                                 <AccordionIcon />

@@ -1,4 +1,3 @@
-import React from "react";
 import FacultyNavbar from "../navbar/FacultyNavbar";
 import { FiShoppingCart } from "react-icons/fi";
 import Product from "../../pages/Product/Product";
@@ -8,7 +7,6 @@ import {
   Flex,
   Icon,
   Badge,
-  Button,
   useToast,
   Select,
   FormLabel,
@@ -187,19 +185,6 @@ export default function Menu() {
     getData2();
   }, []);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       await getData();
-  //       await getData2();
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
   return (
     <>
       <FacultyNavbar />
@@ -211,7 +196,12 @@ export default function Menu() {
           <FormLabel>
             Filter <Icon as={MdFilterAlt} />
           </FormLabel>
-          <Select placeholder="Select option" w="2xl" onChange={handleFilter}>
+          <Select
+            placeholder="All Categories"
+            w="2xl"
+            onChange={handleFilter}
+            bg={"#e3f6f5"}
+          >
             {cat.map((item) => {
               return (
                 <option key={item.id} value={item.category}>

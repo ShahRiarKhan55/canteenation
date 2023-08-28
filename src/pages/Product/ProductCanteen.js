@@ -10,12 +10,14 @@ import {
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
-import Solid from "../../Images/icons8-vegetarian-food-symbol-48.png";
-import Drinks from "../../Images/icons8-non-vegetarian-food-symbol-48.png";
+// import Solid from "../../Images/icons8-vegetarian-food-symbol-48.png";
+// import Drinks from "../../Images/icons8-non-vegetarian-food-symbol-48.png";
+import { FaBowlFood } from "react-icons/fa6";
+import { BiSolidDrink } from "react-icons/bi";
 
 function ProductAddToCart(props) {
   return (
-    <Flex className="flex-div" gap="60px" alignItems="stretch" flexWrap="wrap">
+    <Flex className="flex-div" gap="10px" alignItems="stretch" flexWrap="wrap">
       {props.itm.length === 0 && (
         <Box>
           <h1>No Items</h1>
@@ -24,7 +26,7 @@ function ProductAddToCart(props) {
       {props.itm.map((data) => {
         return (
           <Box
-            maxW="sm"
+            maxW="340px"
             borderWidth="1px"
             rounded="lg"
             shadow="lg"
@@ -47,12 +49,12 @@ function ProductAddToCart(props) {
               src={data.image}
               alt={`Picture of ${data.name}`}
               roundedTop="lg"
-              maxW="sm"
+              maxW="fit"
               maxH="sm"
               objectFit="cover"
             />
 
-            <Box p="6">
+            <Box p="3">
               <Box d="flex" alignItems="baseline">
                 {data.isNew && (
                   <Badge
@@ -96,11 +98,7 @@ function ProductAddToCart(props) {
               <Flex justifyContent="space-between" alignContent="center">
                 <Box fontSize="2xl">
                   <Box as="span" color={"gray.600"} fontSize="lg"></Box>
-                  {data.type === "Solid" ? (
-                    <Image src={Solid}></Image>
-                  ) : (
-                    <Image src={Drinks}></Image>
-                  )}
+                  {data.type === "Solid" ? <FaBowlFood /> : <BiSolidDrink />}
                 </Box>
               </Flex>
               <Flex justifyContent="space-between" alignContent="center" mt="2">
@@ -130,6 +128,7 @@ function ProductAddToCart(props) {
                       }}
                     />
                   </Tooltip>
+                  &nbsp;
                   <Tooltip
                     label="Edit Item"
                     bg="white"

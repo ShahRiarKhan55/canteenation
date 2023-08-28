@@ -141,6 +141,8 @@ export default function Category() {
                   <Td isNumeric>
                     <ButtonGroup>
                       <Button
+                        bg={"#ffd803"}
+                        _hover={{ bg: "#e3f6f5" }}
                         onClick={async () => {
                           setDel(!del);
                           try {
@@ -205,7 +207,6 @@ export default function Category() {
             <Button
               colorScheme="teal"
               bg={"#ffd803"}
-              // variant="outline"
               textColor={"#272343"}
               onClick={handleCat}
               mr={3}

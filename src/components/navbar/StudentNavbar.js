@@ -5,6 +5,7 @@ import {
   useDisclosure,
   useColorModeValue,
   Button,
+  DrawerHeader,
 } from "@chakra-ui/react";
 
 import React from "react";
@@ -15,8 +16,10 @@ import {
   DrawerOverlay,
   Drawer,
   Divider,
+  Image,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import pic from "../../Images/logo.png";
 
 export default function Simple() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -63,9 +66,9 @@ export default function Simple() {
       <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
-          {/* <DrawerHeader borderBottomWidth="1px" bg={"#e3f6f5"}>
-            Logo
-          </DrawerHeader> */}
+          <DrawerHeader borderBottomWidth="1px" bg={"#e3f6f5"}>
+            <Image src={pic} w="100px" h="100px" alt="Logo" />
+          </DrawerHeader>
           <DrawerBody bg={"#e3f6f5"}>
             <Link to="/student/studentmenu">
               <Flex
